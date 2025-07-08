@@ -2,15 +2,19 @@
 import { CgMenuGridR } from "react-icons/cg";
 import { FaHouse } from "react-icons/fa6";
 import { FaCalendar } from "react-icons/fa";
-import { FaPlusCircle } from "react-icons/fa";
 import { RxExit } from "react-icons/rx";
 
 //Style
 import "./styles/MainScreen.css";
 
+//RouterDom
+import { Link, NavLink, Outlet } from "react-router-dom";
+
 export default function MainScreen() {
   return (
+    //Contenedor principal
     <div className="main-container">
+      {/*Barra lateral*/}
       <aside className="aside-nav">
         <header>
           <CgMenuGridR />
@@ -18,32 +22,33 @@ export default function MainScreen() {
         </header>
         <nav className="container-buttons">
           <section>
-            <button className="nav-buttons">
-              <FaHouse />
-              Alojamientos
-            </button>
-            <button className="nav-buttons">
-              <FaCalendar />
-              Reservaciones
-            </button>
+            <NavLink to="accomodations">
+              <button className="nav-buttons">
+                <FaHouse />
+                Alojamientos
+              </button>
+            </NavLink>
+            <NavLink to="bookings">
+              <button className="nav-buttons">
+                <FaCalendar />
+                Reservaciones
+              </button>
+            </NavLink>
           </section>
           <footer>
-            <button className="exit-button">
-              <RxExit />
-              Cerrar Sesión
-            </button>
+            <Link to="/">
+              <button className="exit-button">
+                <RxExit />
+                Cerrar Sesión
+              </button>
+            </Link>
           </footer>
         </nav>
       </aside>
+      {/* Vista principal */}
       <main className="main-view">
-        <header>
-          <h2>Alojamientos</h2>
-          <button>
-            <FaPlusCircle className="circle-plus-icon" />
-            Nuevo Alojamiento
-          </button>
-        </header>
-        <section></section>
+        {/* Aquí se renderizan las rutas */}
+        <Outlet></Outlet>
       </main>
     </div>
   );

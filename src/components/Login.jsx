@@ -1,42 +1,42 @@
-import React, { useState } from 'react';
-import '../styles/Login.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./styles/login.css";
+import { useNavigate } from "react-router-dom";
 // Importamos la función que maneja la autenticación desde el servicio
-import { loginUser } from '../services/authService';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { loginUser } from "../services/authService";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
-    // Estado para guardar el email ingresado por el usuario
-  const [email, setEmail] = useState('');
+  // Estado para guardar el email ingresado por el usuario
+  const [email, setEmail] = useState("");
   // Estado para guardar la contraseña ingresada
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   // Estado para mostrar mensajes de error o éxito
-  const [mensaje, setMensaje] = useState('');
+  const [mensaje, setMensaje] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMensaje('');
+    setMensaje("");
 
     try {
-        // Enviamos las credenciales a la API usando el servicio loginUser
+      // Enviamos las credenciales a la API usando el servicio loginUser
       const data = await loginUser(email, password);
-      
+
       // Si la respuesta incluye un token, el login fue exitoso
       if (data.token) {
         // Guardamos el token y el correo en localStorage
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', email);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", email);
 
         // Redirigir a /home
-        navigate('/home');
+        navigate("/home");
       } else {
-        setMensaje('You are not authorized');
+        setMensaje("You are not authorized");
       }
     } catch (error) {
       console.error(error);
-      setMensaje('You are not authorized');
+      setMensaje("You are not authorized");
     }
   };
 
@@ -67,7 +67,9 @@ function Login() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">Entrar</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Entrar
+          </button>
         </form>
         {mensaje && (
           <div className="mt-3 text-center">

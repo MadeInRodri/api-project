@@ -14,6 +14,7 @@ body,
 #root {
   height: 100vh;
 }
+
 /*
 Instar Bootstrap --> npm install bootstrap
 Y luego importar en cada componente --> import 'bootstrap/dist/css/bootstrap.min.css';
