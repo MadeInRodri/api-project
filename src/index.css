@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+:root {
+  --principal-font-family: "Nunito", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root {
+  height: 100vh;
+}
 /*
 Instar Bootstrap --> npm install bootstrap
 Y luego importar en cada componente --> import 'bootstrap/dist/css/bootstrap.min.css';
