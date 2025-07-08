@@ -7,5 +7,10 @@ Este proyecto incluye un formulario de inicio de sesión que consume una API ext
 ### 1. **Axios**
 Cliente HTTP para realizar peticiones a la API REST.
 
-```bash
-npm install axios
+### 2. **React Router DOM**
+Librería para manejar rutas (navegación) dentro de la aplicación React.
+
+### 3. **Bootstrap**
+Framework CSS para diseño visual rápido y responsivo.
+
+---
