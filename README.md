@@ -4,13 +4,23 @@ Este proyecto incluye un formulario de inicio de sesión que consume una API ext
 
 ## 📦 Librerías utilizadas
 
-### 1. **Axios**
+### 1. **Axios**  
 Cliente HTTP para realizar peticiones a la API REST.
+
+```bash
+npm install axios
+```
 
 ### 2. **React Router DOM**
 Librería para manejar rutas (navegación) dentro de la aplicación React.
 
+```bash
+npm install react-router-dom
+```
+
 ### 3. **Bootstrap**
 Framework CSS para diseño visual rápido y responsivo.
 
----
+```bash
+npm install bootstrap
+```
