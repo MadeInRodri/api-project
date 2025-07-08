@@ -1,0 +1,16 @@
+/*
+Instar Bootstrap --> npm install bootstrap
+Y luego importar en cada componente --> import 'bootstrap/dist/css/bootstrap.min.css';
+*/
+
+.login-container {
+  height: 100vh;
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
