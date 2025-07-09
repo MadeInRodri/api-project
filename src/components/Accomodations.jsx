@@ -1,6 +1,7 @@
 import React from "react";
 import { FaPlusCircle } from "react-icons/fa";
 import "./styles/MainScreen.css";
+import AccomodationCard from "./AccomodationCard";
 
 export default function Accomodations() {
   return (
@@ -12,7 +13,12 @@ export default function Accomodations() {
           Nuevo Alojamiento
         </button>
       </header>
-      <section>{/* Alojamientos aquí */}</section>
+      
+      <section>
+        {/* Alojamientos aquí */}
+        <AccomodationCard />
+        
+      </section>
     </>
   );
 }
