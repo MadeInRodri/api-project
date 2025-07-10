@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsGeoAltFill, BsInfoCircle, BsPencilFill, BsTrashFill } from "react-icons/bs";
 
-export default function BookingList() {
+export default function AccomodationCard() {
   const [bookings, setBookings] = useState([]);
   const [accomodations, setAccomodations] = useState([]);
   const [loading, setLoading] = useState(false);

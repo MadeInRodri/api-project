@@ -1,5 +1,6 @@
 import React from "react";
 import { FaPlusCircle } from "react-icons/fa";
+import BookingList from "./BookingList";
 
 export default function Bookings() {
   return (
@@ -11,7 +12,9 @@ export default function Bookings() {
           Nueva Reserva
         </button>
       </header>
-      <section>{/* Reservas aquí */}</section>
+      <section>
+        <BookingList/>
+      </section>
     </>
   );
 }

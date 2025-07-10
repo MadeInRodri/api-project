@@ -17,7 +17,6 @@ export default function Accomodations() {
       <section>
         {/* Alojamientos aquí */}
         <AccomodationCard />
-        
       </section>
     </>
   );
