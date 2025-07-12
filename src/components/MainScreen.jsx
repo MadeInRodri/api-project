@@ -28,12 +28,22 @@ export default function MainScreen() {
                 Alojamientos
               </button>
             </NavLink>
+
             <NavLink to="bookings">
               <button className="nav-buttons">
                 <FaCalendar />
                 Reservaciones
               </button>
             </NavLink>
+
+            {/* ✅ Nuevo botón Calendario */}
+            <NavLink to="calendar">
+              <button className="nav-buttons">
+                <FaCalendar />
+                Calendario
+              </button>
+            </NavLink>
+
           </section>
           <footer>
             <Link to="/">
@@ -45,10 +55,10 @@ export default function MainScreen() {
           </footer>
         </nav>
       </aside>
+
       {/* Vista principal */}
       <main className="main-view">
-        {/* Aquí se renderizan las rutas */}
-        <Outlet></Outlet>
+        <Outlet />
       </main>
     </div>
   );
