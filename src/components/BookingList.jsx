@@ -7,8 +7,10 @@ export default function BookingList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const BOOKINGS_API_URL = "https://apibookingsaccomodations-production.up.railway.app/api/V1/bookings";
-  const ACCOMMODATIONS_API_URL = "https://apibookingsaccomodations-production.up.railway.app/api/V1/accomodations";
+  const BOOKINGS_API_URL =
+    "https://apibookingsaccomodations-production.up.railway.app/api/V1/bookings";
+  const ACCOMMODATIONS_API_URL =
+    "https://apibookingsaccomodations-production.up.railway.app/api/V1/accomodations";
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function BookingList() {
       setError(null);
 
       if (!token) {
-        setError("No se encontró token de autenticación.");
+        setError("Usted no está autorizado para ver esta información.");
         setLoading(false);
         return;
       }
@@ -25,10 +27,16 @@ export default function BookingList() {
       try {
         const [bookingsRes, accommodationsRes] = await Promise.all([
           fetch(BOOKINGS_API_URL, {
-            headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+            },
           }),
           fetch(ACCOMMODATIONS_API_URL, {
-            headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/json",
+            },
           }),
         ]);
 
@@ -53,23 +61,26 @@ export default function BookingList() {
 
   // Filtrar las reservaciones según alojamiento seleccionado
   const filteredBookings = selectedAccommodationId
-    ? bookings.filter(b => String(b.accomodation_id) === selectedAccommodationId)
+    ? bookings.filter(
+        (b) => String(b.accomodation_id) === selectedAccommodationId
+      )
     : bookings; // si no hay filtro, mostrar todas
 
   return (
     <div className="container">
-
       {/* Select para elegir alojamiento */}
       <div className="mb-3">
-        <label htmlFor="accommodationSelect" className="form-label">Filtrar por alojamiento:</label>
+        <label htmlFor="accommodationSelect" className="form-label">
+          Filtrar por alojamiento:
+        </label>
         <select
           id="accommodationSelect"
           className="form-select"
           value={selectedAccommodationId}
-          onChange={e => setSelectedAccommodationId(e.target.value)}>
-            
+          onChange={(e) => setSelectedAccommodationId(e.target.value)}
+        >
           <option value="">-- Todos los alojamientos --</option>
-          {accommodations.map(acc => (
+          {accommodations.map((acc) => (
             <option key={acc.id} value={String(acc.id)}>
               {acc.name}
             </option>
@@ -86,17 +97,29 @@ export default function BookingList() {
 
       {!loading && !error && (
         <div className="row">
-          {filteredBookings.map(b => (
+          {filteredBookings.map((b) => (
             <div key={b.id} className="col-md-6 mb-3">
               <div className="card shadow-sm">
                 <div className="card-body">
                   <h5 className="card-title">Reserva: {b.booking}</h5>
-                  <p><strong>Cliente:</strong> {b.user}</p>
-                  <p><strong>Alojamiento:</strong> {b.accomodation}</p>
-                  <p><strong>Entrada:</strong> {b.check_in_date}</p>
-                  <p><strong>Salida:</strong> {b.check_out_date}</p>
-                  <p><strong>Total:</strong> ${b.total_amount}</p>
-                  <p><strong>Estado:</strong> {b.status}</p>
+                  <p>
+                    <strong>Cliente:</strong> {b.user}
+                  </p>
+                  <p>
+                    <strong>Alojamiento:</strong> {b.accomodation}
+                  </p>
+                  <p>
+                    <strong>Entrada:</strong> {b.check_in_date}
+                  </p>
+                  <p>
+                    <strong>Salida:</strong> {b.check_out_date}
+                  </p>
+                  <p>
+                    <strong>Total:</strong> ${b.total_amount}
+                  </p>
+                  <p>
+                    <strong>Estado:</strong> {b.status}
+                  </p>
                 </div>
               </div>
             </div>

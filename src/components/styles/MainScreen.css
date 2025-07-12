@@ -21,9 +21,9 @@
     align-items: center;
     gap: 0.5rem;
 
-    height: 2rem;
+    min-height: 2rem;
     border: none;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: #1b3c53;
     color: white;
   }
@@ -62,12 +62,13 @@
   .main-view {
     padding: 1rem;
     background-color: #d2c1b6;
+    overflow-y: scroll;
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-
+      gap: 1rem;
       button {
         color: white;
         border-radius: 0.5rem;

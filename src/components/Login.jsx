@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/login.css";
 import { useNavigate } from "react-router-dom";
 // Importamos la función que maneja la autenticación desde el servicio
 import { loginUser } from "../services/authService";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { clearLocalStorage } from "../functions/localStorageFunct";
 
 function Login() {
   // Estado para guardar el email ingresado por el usuario
@@ -12,6 +13,10 @@ function Login() {
   const [password, setPassword] = useState("");
   // Estado para mostrar mensajes de error o éxito
   const [mensaje, setMensaje] = useState("");
+
+  useEffect(() => {
+    // clearLocalStorage();
+  }, []);
 
   const navigate = useNavigate();
 
