@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import {
-  BsGeoAltFill,
-  BsInfoCircle,
-  BsPencilFill,
-  BsTrashFill,
-} from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { BsGeoAltFill, BsInfoCircle, BsPencilFill } from "react-icons/bs";
 
-export default function BookingList() {
+export default function BookingList({
+  setDisplayPopupEdit,
+  setIdAccomodation,
+}) {
   const [bookings, setBookings] = useState([]);
   const [accomodations, setAccomodations] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -81,6 +79,7 @@ export default function BookingList() {
   return (
     <>
       {bookings.map(({ id, accomodation }) => {
+        //Solo muestra lugares con una reservación
         const details = getAccomodationDetails(accomodation);
 
         return (
@@ -104,16 +103,13 @@ export default function BookingList() {
                 <button
                   className="btn btn-sm text-primary p-0 bg-transparent"
                   title="Editar"
-                  onClick={() => console.log("Editar reservación", id)}
+                  onClick={() => {
+                    console.log("Editar reservación", id);
+                    setDisplayPopupEdit("flex");
+                    setIdAccomodation(details.id);
+                  }}
                 >
                   <BsPencilFill />
-                </button>
-                <button
-                  className="btn btn-sm text-danger p-0 bg-transparent"
-                  title="Eliminar"
-                  onClick={() => console.log("Eliminar reservación", id)}
-                >
-                  <BsTrashFill />
                 </button>
               </div>
             </div>

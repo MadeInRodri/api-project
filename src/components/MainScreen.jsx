@@ -8,9 +8,20 @@ import { RxExit } from "react-icons/rx";
 import "./styles/MainScreen.css";
 
 //RouterDom
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { unautorizedAlert } from "../functions/myAlertFunct";
 
 export default function MainScreen() {
+  const navigate = useNavigate();
+
+  const handleNavigate = (route) => {
+    if (localStorage.getItem("token")) {
+      navigate(`${route}`);
+    } else {
+      unautorizedAlert();
+      navigate("/");
+    }
+  };
   return (
     //Contenedor principal
     <div className="main-container">
@@ -22,32 +33,43 @@ export default function MainScreen() {
         </header>
         <nav className="container-buttons">
           <section>
-            <NavLink to="accomodations">
-              <button className="nav-buttons">
-                <FaHouse />
-                Alojamientos
-              </button>
-            </NavLink>
+            <button
+              className="nav-buttons"
+              onClick={() => {
+                handleNavigate("accomodations");
+              }}
+            >
+              <FaHouse />
+              Alojamientos
+            </button>
+            <button
+              className="nav-buttons"
+              onClick={() => {
+                handleNavigate("bookings");
+              }}
+            >
+              <FaCalendar />
+              Reservaciones
+            </button>
 
-            <NavLink to="bookings">
-              <button className="nav-buttons">
-                <FaCalendar />
-                Reservaciones
-              </button>
-            </NavLink>
-
-            {/* ✅ Nuevo botón Calendario */}
-            <NavLink to="calendar">
-              <button className="nav-buttons">
-                <FaCalendar />
-                Calendario
-              </button>
-            </NavLink>
-
+            <button
+              className="nav-buttons"
+              onClick={() => {
+                handleNavigate("calendar");
+              }}
+            >
+              <FaCalendar />
+              Calendario
+            </button>
           </section>
           <footer>
             <Link to="/">
-              <button className="exit-button">
+              <button
+                className="exit-button"
+                onClick={() => {
+                  localStorage.clear();
+                }}
+              >
                 <RxExit />
                 Cerrar Sesión
               </button>

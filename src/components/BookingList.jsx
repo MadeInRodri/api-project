@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { patchStatusBooking } from "../services/bookingServices";
 
 export default function BookingList() {
   const [bookings, setBookings] = useState([]);
@@ -120,6 +121,21 @@ export default function BookingList() {
                   <p>
                     <strong>Estado:</strong> {b.status}
                   </p>
+                  <button
+                    className={
+                      b.status == "CONFIRMED"
+                        ? "btn bg-danger"
+                        : "btn bg-success"
+                    }
+                    onClick={async () => {
+                      let statusChanged =
+                        b.status == "CONFIRMED" ? "CANCELLED" : "CONFIRMED";
+                      await patchStatusBooking(b.id, statusChanged);
+                      window.location.reload();
+                    }}
+                  >
+                    Cambiar estado
+                  </button>
                 </div>
               </div>
             </div>
